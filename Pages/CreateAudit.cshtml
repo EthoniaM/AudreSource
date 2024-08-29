@@ -1,0 +1,29 @@
+﻿@page
+@model AudreSource.Pages.CreateAuditModel
+
+@{
+    ViewData["Title"] = "Create Audit";
+}
+
+<h2>Create Audit</h2>
+
+<form method="post">
+
+    <div class="form-group">
+        <label asp-for="Audit.AuditTitle"></label>
+        <input asp-for="Audit.AuditTitle" class="form-control" />
+        <span asp-validation-for="Audit.AuditTitle" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Audit.AuditDescription"></label>
+        <textarea asp-for="Audit.AuditDescription" class="form-control"></textarea>
+        <span asp-validation-for="Audit.AuditDescription" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+    <a class="btn btn-secondary" asp-page="/AuditList">Back to List</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

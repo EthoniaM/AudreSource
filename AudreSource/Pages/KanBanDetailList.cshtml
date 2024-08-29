@@ -1,0 +1,30 @@
+﻿@page
+@model AudreSource.Pages.KanBanDetailListModel
+
+<a class="btn btn-primary" asp-page="/CreateKanBanDetail">Create KanBan Detail</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>KanBan Task</th>
+            <th>User</th>
+            <th>Comments</th>
+            <th>Actions</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.KanBanDetails)
+        {
+            <tr>
+                <td>@item.Kanban.TaskTitle</td>
+                <td>@item.User.FirstNames @item.User.Surname</td>
+                <td>@item.Comments</td>
+                <td>
+                    <a asp-page="./EditKanBanDetail" asp-route-id="@item.KanBanDetailsID">Edit</a> |
+                    <a asp-page="./DeleteKanBanDetail" asp-route-id="@item.KanBanDetailsID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

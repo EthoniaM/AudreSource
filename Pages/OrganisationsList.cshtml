@@ -1,0 +1,37 @@
+﻿@page
+@model AudreSource.Pages.OrganisationsListModel
+@{
+}
+
+<a class="btn btn-primary" asp-page="/CreateOrganisation">Create Organisation</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>OrganisationName</th>
+            <th>Representative</th>
+            <th>Address</th>
+            <th>ContactNumber</th>
+            <th>Domain</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var Organisation in Model.Organisations)
+        {
+            <tr>
+                <td>@Organisation.OrganisationName</td>
+                <td>@Organisation.Representative</td>
+                <td>@Organisation.Address</td>
+                <td>@Organisation.ContactNumber</td>
+                <td>@Organisation.Domain</td>
+                <td>
+                    <a class="btn btn-warning" asp-page="/EditOrganisation" asp-route-id="@Organisation.OrganisationID">Edit</a>
+                    <a class="btn btn-danger" asp-page="/DeleteOrganisation" asp-route-id="@Organisation.OrganisationID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

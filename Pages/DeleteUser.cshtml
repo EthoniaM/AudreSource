@@ -1,0 +1,60 @@
+﻿@page "{id:int}"
+@model AudreSource.Pages.DeleteUserModel
+@{
+    ViewData["Title"] = "Delete User";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2>Delete User</h2>
+    </div>
+    <div class="card-body">
+        <form method="post">
+            <div class="container">
+                <input type="hidden" asp-for="User.UsersID" />
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="FirstNames" class="form-label">First Name</label>
+                        <input type="text" id="FirstNames" class="form-control" asp-for="User.FirstNames">
+                        <span asp-validation-for="User.FirstNames" class="text-danger"></span>
+                    </div>
+                    <div class="col">
+                        <label for="Surname" class="form-label">Surname</label>
+                        <input type="text" id="Surname" class="form-control" asp-for="User.Surname">
+                        <span asp-validation-for="User.Surname" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="MobileNumber" class="form-label">Mobile Number</label>
+                        <input type="number" id="MobileNumber" class="form-control" asp-for="User.MobileNumber">
+                        <span asp-validation-for="User.MobileNumber" class="text-danger"></span>
+                    </div>
+                    <div class="col">
+                        <label for="Position" class="form-label">Position</label>
+                        <input type="text" id="Position" class="form-control" asp-for="User.Position">
+                        <span asp-validation-for="User.Position" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="EmailAddress" class="form-label">Email Address</label>
+                        <input type="email" id="EmailAddress" class="form-control" asp-for="User.EmailAddress">
+                        <span asp-validation-for="User.EmailAddress" class="text-danger"></span>
+                    </div>
+                <div class="row">
+                    <div class="col">
+                        <button class="btn btn-danger" type="submit">Delete User</button>
+                        <a class="btn btn-secondary" asp-page="/UsersList">Back to List</a>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

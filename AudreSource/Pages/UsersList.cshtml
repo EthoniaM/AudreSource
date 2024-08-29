@@ -1,0 +1,38 @@
+﻿@page
+@model AudreSource.Pages.UsersList
+@{
+}
+
+@{
+    ViewData["Title"] = "UsersList";
+}
+
+<a class="btn btn-primary" asp-page="/CreateUsers">Create Users</a>
+<table class="table table-striped mt-3">
+    <thead>
+        <tr>
+            <th>First Names</th>
+            <th>Surname</th>
+            <th>Mobile Number</th>
+            <th>Position</th>
+            <th>Email Address</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.Users)
+        {
+            <tr>
+                <td>@user.FirstNames</td>
+                <td>@user.Surname</td>
+                <td>@user.MobileNumber</td>
+                <td>@user.Position</td>
+                <td>@user.EmailAddress</td>
+                <td>
+                    <a class="btn btn-warning" asp-page="/EditUser" asp-route-id="@user.UsersID">Edit</a>
+                    <a class="btn btn-danger" asp-page="/DeleteUser" asp-route-id="@user.UsersID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

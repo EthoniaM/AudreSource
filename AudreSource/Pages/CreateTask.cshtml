@@ -1,0 +1,108 @@
+﻿@page "{auditId:int?}"
+@model AudreSource.Pages.CreateTaskModel
+
+@{
+    ViewData["Title"] = "Create New Task";
+}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+    .form-control,
+    .form-select {
+        background-color: #f0f0f0; /* Light grey background */
+        color: #333; /* Text color */
+    }
+</style>
+
+<h4>Create New Task</h4>
+<form method="post">
+    <div class="row">
+        <!-- Audit Selection -->
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="NewTask.AuditID"></label>
+                <select asp-for="NewTask.AuditID" class="form-select">
+                    <option value="">Select Audit</option>
+                    @foreach (var audit in Model.Audits)
+                    {
+                        <option value="@audit.AuditID">@audit.AuditTitle</option>
+                    }
+                </select>
+                <span asp-validation-for="NewTask.AuditID" class="text-danger"></span>
+            </div>
+        </div>
+
+        <!-- Task Title -->
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="NewTask.TaskTitle"></label>
+                <input asp-for="NewTask.TaskTitle" class="form-control" />
+                <span asp-validation-for="NewTask.TaskTitle" class="text-danger"></span>
+            </div>
+        </div>
+
+        <!-- Status -->
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="NewTask.Status"></label>
+                <select asp-for="NewTask.Status" class="form-select">
+                    <option value="">Select Status</option>
+                    <option>Not Started</option>
+                    <option>In Progress</option>
+                    <option>Completed</option>
+                </select>
+                <span asp-validation-for="NewTask.Status" class="text-danger"></span>
+            </div>
+        </div>
+
+        <!-- Priority -->
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="NewTask.Priority"></label>
+                <select asp-for="NewTask.Priority" class="form-select">
+                    <option value="">Select Priority</option>
+                    <option>Low</option>
+                    <option>Medium</option>
+                    <option>High</option>
+                </select>
+                <span asp-validation-for="NewTask.Priority" class="text-danger"></span>
+            </div>
+        </div>
+
+        <!-- Task Description -->
+        <div class="col-md-12">
+            <div class="form-group">
+                <label asp-for="NewTask.TaskDescription"></label>
+                <textarea asp-for="NewTask.TaskDescription" class="form-control"></textarea>
+                <span asp-validation-for="NewTask.TaskDescription" class="text-danger"></span>
+            </div>
+        </div>
+
+        <!-- Start Date and End Date (Same Line) -->
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="NewTask.StartDate"></label>
+                <input asp-for="NewTask.StartDate" class="form-control" type="date" />
+                <span asp-validation-for="NewTask.StartDate" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="NewTask.EndDate"></label>
+                <input asp-for="NewTask.EndDate" class="form-control" type="date" />
+                <span asp-validation-for="NewTask.EndDate" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-success">Create Task</button>
+        <a href="@Url.Page("/KanbanBoard", new { auditId = Model.AuditID })" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

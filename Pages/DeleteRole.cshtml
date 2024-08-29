@@ -1,0 +1,40 @@
+﻿@page "{id:int}"
+@model AudreSource.Pages.DeleteRoleModel
+@{
+}
+<div class="card">
+    <div class="card-header">
+        <h2>Delete Roles</h2>
+    </div>
+    <div class="card-body">
+        <form method="post">
+            <div class="container">
+                <input type="hidden" asp-for="RoleInfo.RoleID" />
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="Role" class="form-label">Role</label>
+                        <input type="text" id="Role" class="form-control" asp-for="RoleInfo.Role">
+                        <span asp-validation-for="RoleInfo.Role" class="text-danger"></span>
+                    </div>
+                    <div class="col">
+                        <label for="RoleDescription" class="form-label">RoleDescription</label>
+                        <input type="text" id="RoleDescription" class="form-control" asp-for="RoleInfo.RoleDescription">
+                        <span asp-validation-for="RoleInfo.RoleDescription" class="text-danger"></span>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col">
+                        <button class="btn btn-danger" type="submit">Delete Roles</button>
+                        <a class="btn btn-secondary" asp-page="/RolesList">Back to List</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

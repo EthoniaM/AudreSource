@@ -1,0 +1,32 @@
+﻿@page
+@model AudreSource.Pages.UserDetailsListModel
+@{
+}
+
+<a class="btn btn-primary" asp-page="/CreateUserDetail">Create UsersDetail</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Address</th>
+            <th>Country</th>
+            <th>Nationality</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var userDetail in Model.UserDetails)
+        {
+            <tr>
+                <td>@userDetail.Address</td>
+                <td>@userDetail.Country</td>
+                <td>@userDetail.Nationality</td>
+                <td>
+                    <a class="btn btn-warning" asp-page="/EditUserDetail" asp-route-id="@userDetail.UserDetailsID">Edit</a>
+                    <a class="btn btn-danger" asp-page="/DeleteUserDetail" asp-route-id="@userDetail.UserDetailsID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

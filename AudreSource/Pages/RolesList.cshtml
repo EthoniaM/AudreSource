@@ -1,0 +1,28 @@
+﻿@page
+@model AudreSource.Pages.RolesListModel
+@{
+}
+
+<a class="btn btn-primary" asp-page="/CreateRole">Create New Role</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Role</th>
+            <th>Role Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var roleInfo in Model.Roles)
+        {
+            <tr>
+                <td>@roleInfo.Role</td>
+                <td>@roleInfo.RoleDescription</td>
+                <td>
+                    <a class="btn btn-warning" asp-page="/EditRole" asp-route-id="@roleInfo.RoleID">Edit</a>
+                    <a class="btn btn-danger" asp-page="/DeleteRole" asp-route-id="@roleInfo.RoleID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,39 @@
+﻿@page
+@model AudreSource.Pages.AuditListModel
+@{
+}
+
+<h2>Audits</h2>
+
+<p>
+    <a asp-page="./CreateAudit">Create New Audit</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>AuditID</th>
+            <th>AuditNumber</th>
+            <th>AuditDescription</th>
+            <th>AuditTitle</th>
+            <th>CreatedOn</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Audits)
+        {
+            <tr>
+                <td>@item.AuditID</td>
+                <td>@item.AuditNumber</td>
+                <td>@item.AuditDescription</td>
+                <td>@item.AuditTitle</td>
+                <td>@item.CreatedOn</td>
+                <td>
+                    <a asp-page="./EditAudit" asp-route-id="@item.AuditID">Edit</a> |
+                    <a asp-page="./DeleteAudit" asp-route-id="@item.AuditID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

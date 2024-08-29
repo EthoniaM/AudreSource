@@ -1,0 +1,42 @@
+﻿@page
+@model AudreSource.Pages.CreateUserDetailModel
+
+
+<h3> Create User Details</h3>
+<div class="card">
+   
+    <div class="card-body">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="UserDetail.UsersID">Select User</label>
+                <select asp-for="UserDetail.UsersID" class="form-control" asp-items="Model.UsersSelectList">
+                    <option value="">Select a User</option>
+                </select>
+                <span asp-validation-for="UserDetail.UsersID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserDetail.Address"></label>
+                <input asp-for="UserDetail.Address" class="form-control" />
+                <span asp-validation-for="UserDetail.Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserDetail.Country"></label>
+                <input asp-for="UserDetail.Country" class="form-control" />
+                <span asp-validation-for="UserDetail.Country" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserDetail.Nationality"></label>
+                <input asp-for="UserDetail.Nationality" class="form-control" />
+                <span asp-validation-for="UserDetail.Nationality" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Create</button>
+                <a class="btn btn-secondary" asp-page="/UserDetailList">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

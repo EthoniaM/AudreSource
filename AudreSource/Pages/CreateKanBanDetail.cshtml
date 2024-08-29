@@ -1,0 +1,38 @@
+﻿@page
+@model AudreSource.Pages.CreateKanBanDetailModel
+
+
+<h4>Create Details</h4>
+<div class="card">
+    <div class="card-body">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="KanBanDetail.UsersID">Select User</label>
+                <select asp-for="KanBanDetail.UsersID" class="form-control" asp-items="Model.UsersSelectList">
+                    <option value="">Select a User</option>
+                </select>
+                <span asp-validation-for="KanBanDetail.UsersID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KanBanDetail.KanBanID">Select KanBan</label>
+                <select asp-for="KanBanDetail.KanBanID" class="form-control" asp-items="Model.KanBansSelectList">
+                    <option value="">Select a KanBan</option>
+                </select>
+                <span asp-validation-for="KanBanDetail.KanBanID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KanBanDetail.Comments"></label>
+                <textarea asp-for="KanBanDetail.Comments" class="form-control"></textarea>
+                <span asp-validation-for="KanBanDetail.Comments" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Create</button>
+                <a class="btn btn-secondary" asp-page="/KanBanDetailList">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
